@@ -134,7 +134,7 @@ func (d *DingTalk) SendText(content string) error {
 func (d *DingTalk) SendLog(content string) error {
 	var msgText MsgText
 	msgText.MsgType = "text"
-	msgText.Text.Content = fmt.Sprintf("[%s]     %s", time.Now().Format("2006-01-02 15:04:05"), content)
+	msgText.Text.Content = fmt.Sprintf("[%s]     [%s]     %s", time.Now().Format("2006-01-02 15:04:05"), GetIP(), content)
 
 	req, err := httplib.Post(d.GetUrl()).JSONBody(msgText)
 	if err != nil {
